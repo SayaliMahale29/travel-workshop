@@ -1,5 +1,7 @@
 import { getSiteContent } from "@/lib/storage";
 
+export const dynamic = "force-dynamic";
+
 export default async function PrivacyPage() {
   const content = await getSiteContent();
 
@@ -21,9 +23,10 @@ export default async function PrivacyPage() {
 
         <h2 className="mt-8 text-xl font-semibold">Data we collect</h2>
         <p className="text-ink-700">
-          When you register, we collect your name, email, and phone number to process payment,
-          send workshop details, and contact you about the event. Payment is processed securely by
-          Razorpay — we do not store card or UPI details.
+          When you register, we collect the information you enter, your transaction reference,
+          and your payment screenshot to verify payment, send workshop details, and contact you
+          about the event. Payment screenshots are protected and available only to the workshop
+          admin.
         </p>
       </div>
     </section>

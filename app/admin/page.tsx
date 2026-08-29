@@ -119,7 +119,7 @@ export default function AdminPage() {
               tab === "registrations" ? "bg-brand-600 text-white" : "bg-white text-ink-700"
             }`}
           >
-            Paid registrations ({registrations.length})
+            Registrations ({registrations.length})
           </button>
         </div>
 
@@ -237,40 +237,61 @@ export default function AdminPage() {
         )}
 
         {tab === "registrations" && (
-          <div className="overflow-x-auto rounded-2xl bg-white shadow-sm">
-            <table className="w-full text-left text-sm">
-              <thead className="border-b bg-brand-50">
-                <tr>
-                  <th className="p-4">Name</th>
-                  <th className="p-4">Email</th>
-                  <th className="p-4">Phone</th>
-                  <th className="p-4">Amount</th>
-                  <th className="p-4">Paid at</th>
-                </tr>
-              </thead>
-              <tbody>
-                {registrations.length === 0 ? (
-                  <tr>
-                    <td colSpan={5} className="p-8 text-center text-ink-500">
-                      No paid registrations yet
-                    </td>
-                  </tr>
-                ) : (
-                  registrations.map((r) => (
-                    <tr key={r.id} className="border-b">
-                      <td className="p-4">{r.name}</td>
-                      <td className="p-4">{r.email}</td>
-                      <td className="p-4">{r.phone}</td>
-                      <td className="p-4">₹{r.amount}</td>
-                      <td className="p-4">{r.paidAt ? new Date(r.paidAt).toLocaleString() : "—"}</td>
-                    </tr>
-                  ))
-                )}
-              </tbody>
-            </table>
+          <div className="space-y-4">
+            {registrations.length === 0 ? (
+              <div className="rounded-2xl bg-white p-8 text-center text-ink-500 shadow-sm">
+                No registrations submitted yet
+              </div>
+            ) : (
+              registrations.map((r) => (
+                <article key={r.id} className="rounded-2xl bg-white p-5 shadow-sm sm:p-6">
+                  <div className="flex flex-wrap items-start justify-between gap-3">
+                    <div>
+                      <h2 className="text-lg font-bold text-ink-950">{r.name}</h2>
+                      <p className="text-sm text-ink-600">{r.email} · {r.phone}</p>
+                    </div>
+                    <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-900">
+                      Payment submitted · ₹{r.amount}
+                    </span>
+                  </div>
+
+                  <dl className="mt-5 grid gap-4 text-sm sm:grid-cols-2">
+                    <Detail label="Age" value={r.age} />
+                    <Detail label="Location" value={r.location} />
+                    <Detail label="Instagram / YouTube" value={r.socialLink} />
+                    <Detail label="Experience" value={r.experience} />
+                    <Detail label="Biggest challenge" value={r.biggestChallenge} />
+                    <Detail label="Learning goal" value={r.learningGoal} />
+                    <Detail label="Favourite Akash content" value={r.favoriteAkashContent} />
+                    <Detail label="Transaction ID" value={r.transactionId} />
+                    <Detail label="Submitted" value={new Date(r.createdAt).toLocaleString()} />
+                  </dl>
+
+                  {r.paymentScreenshotPath && (
+                    <a
+                      href={`/api/admin/registrations/${r.id}/screenshot`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-5 inline-block rounded-full bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white"
+                    >
+                      View payment screenshot
+                    </a>
+                  )}
+                </article>
+              ))
+            )}
           </div>
         )}
       </div>
     </section>
+  );
+}
+
+function Detail({ label, value }: { label: string; value?: string }) {
+  return (
+    <div>
+      <dt className="font-medium text-ink-500">{label}</dt>
+      <dd className="mt-1 break-words text-ink-900">{value || "—"}</dd>
+    </div>
   );
 }

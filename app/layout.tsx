@@ -21,6 +21,9 @@ const anton = Anton({
   variable: "--font-title",
 });
 
+// Admin edits must appear without a redeploy.
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getSiteContent();
   return {
@@ -45,7 +48,11 @@ export default async function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable} ${anton.variable}`}>
       <body className="font-sans antialiased">
-        <Header siteName={content.siteName} registrationOpen={content.workshop.registrationOpen} />
+        <Header
+          siteName={content.siteName}
+          registrationOpen={content.workshop.registrationOpen}
+          registerHref="/register"
+        />
         <main>{children}</main>
         <Footer
           siteName={content.siteName}

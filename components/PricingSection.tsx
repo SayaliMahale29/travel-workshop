@@ -1,11 +1,12 @@
-import Link from "next/link";
+import RegisterCta from "@/components/RegisterCta";
 import type { SiteContent } from "@/lib/types";
 
 type Props = {
   content: SiteContent;
+  registerHref: string;
 };
 
-export default function PricingSection({ content }: Props) {
+export default function PricingSection({ content, registerHref }: Props) {
   const { workshop } = content;
 
   if (!workshop.registrationOpen) {
@@ -36,18 +37,18 @@ export default function PricingSection({ content }: Props) {
             <li>✓ {workshop.dates}</li>
             <li>✓ {workshop.time}</li>
             <li>✓ {workshop.duration}</li>
-            <li>✓ Confirmation via email & WhatsApp</li>
+            <li>✓ Confirmation after payment verification</li>
           </ul>
 
-          <Link
-            href="/register"
+          <RegisterCta
+            href={registerHref}
             className="mt-8 inline-block w-full rounded-xl bg-amber-400 px-8 py-4 text-lg font-semibold text-ink-950 transition hover:bg-amber-300"
           >
             Buy now — ₹{workshop.price}
-          </Link>
+          </RegisterCta>
 
           <p className="mt-4 text-xs text-ink-500">
-            Secure payment via Razorpay (UPI, cards, netbanking)
+            Register, pay by UPI, and upload your payment screenshot
           </p>
         </div>
       </div>

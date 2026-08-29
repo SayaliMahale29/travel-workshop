@@ -20,7 +20,7 @@ export async function GET() {
 
   return NextResponse.json({
     content,
-    registrations: registrations.filter((r) => r.status === "paid"),
+    registrations: registrations.filter((r) => r.status === "submitted" || r.status === "paid"),
   });
 }
 

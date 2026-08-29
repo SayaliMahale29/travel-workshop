@@ -1,12 +1,18 @@
-import Link from "next/link";
+import RegisterCta from "@/components/RegisterCta";
 
 type Props = {
   price: number;
   originalPrice: number;
   registrationOpen: boolean;
+  registerHref: string;
 };
 
-export default function StickyBuyBar({ price, originalPrice, registrationOpen }: Props) {
+export default function StickyBuyBar({
+  price,
+  originalPrice,
+  registrationOpen,
+  registerHref,
+}: Props) {
   if (!registrationOpen) return null;
 
   return (
@@ -16,12 +22,12 @@ export default function StickyBuyBar({ price, originalPrice, registrationOpen }:
           <p className="text-sm text-ink-500 line-through">₹{originalPrice}</p>
           <p className="text-2xl font-bold text-ink-950 sm:text-3xl">₹{price}</p>
         </div>
-        <Link
-          href="/register"
+        <RegisterCta
+          href={registerHref}
           className="rounded-xl bg-amber-400 px-8 py-3.5 text-base font-semibold text-ink-950 shadow-sm transition hover:bg-amber-300 sm:px-12 sm:text-lg"
         >
           Buy now
-        </Link>
+        </RegisterCta>
       </div>
     </div>
   );
