@@ -1,0 +1,94 @@
+{
+  "siteName": "The Art of Storytelling Content Workshop with Akash",
+  "title": "The Art of Storytelling Content Workshop with Akash",
+  "tagline": "A beginner-friendly 2-day online workshop to start creating, experiment, and find your own style.",
+  "creator": {
+    "name": "Akash",
+    "intro": "Coming from a small town, I've built my name in the Marathi content creation space with 50M+ views, 2.5L+ followers and 8+ successful travel series, including Akash Challa 36 Divas 36 Jile and Unplanned Hampi.",
+    "voiceSection": "Akash has his own point of view when it comes to editing, storytelling, finding stories, and even approaching new and unknown people. That perspective is what makes his content special and what makes it truly his.",
+    "social": {
+      "youtube": "",
+      "instagram": "https://www.instagram.com/akasheyess?igsi=N2Njcjg4NWRrMGkx&utm_source=qr"
+    }
+  },
+  "workshop": {
+    "dates": "5th & 6th September 2026",
+    "time": "10 AM – 12 PM IST",
+    "duration": "4+ hours across 2 days",
+    "mode": "Online",
+    "seats": "Limited seats available",
+    "originalPrice": 1500,
+    "price": 799,
+    "currency": "INR",
+    "registrationOpen": true,
+    "joinDetails": "Workshop link and joining instructions will be sent to your email and WhatsApp after successful payment.",
+    "day1": {
+      "title": "Day 1 — Script Writing & Visuals",
+      "sections": [
+        {
+          "title": "Script Writing",
+          "items": [
+            "Write meaningful short-form scripts",
+            "Create hooks nobody wants to skip",
+            "Break down Akash's real scripts and videos",
+            "Learn to create endings that leave a meaningful impact"
+          ]
+        },
+        {
+          "title": "Visual Storytelling — Special Lecture by Siddhi Dalvi",
+          "subtitle": "Actor | Model | Assistant Director | DOP Assistant",
+          "items": [
+            "Learn how to tell stories and bring emotions to life through visuals",
+            "Understand the aesthetic behind a frame",
+            "Learn how a DOP thinks",
+            "Explore angles, framing and shot sizes and the meaning behind them",
+            "Learn how to shoot effective B-rolls and why they matter"
+          ]
+        },
+        {
+          "title": "Practicals & Homework",
+          "items": [
+            "You get hands-on practicals and homework, not just theory",
+            "Everything taught in the session, you will actually do yourself",
+            "Write, shoot and edit your own story and get direction on it",
+            "Learn by creating — that is how the lessons truly stay with you"
+          ]
+        }
+      ]
+    },
+    "day2": {
+      "title": "Day 2 — Edit & Storytelling",
+      "sections": [
+        {
+          "title": "Editing",
+          "items": [
+            "Watch Akash break down how he edits his videos from start to finish",
+            "Understand how visuals, sound, music, stickers and pacing work together",
+            "Get a look at Akash's actual editing timelines",
+            "Watch him write, shoot and edit a video live"
+          ]
+        },
+        {
+          "title": "Voiceover",
+          "items": [
+            "Make your voice sound natural and engaging",
+            "Learn voice modulation, pauses and delivery"
+          ]
+        },
+        {
+          "title": "Storytelling",
+          "items": [
+            "Turn real-life experiences into stories worth telling",
+            "Learn how to start and end a story",
+            "Build emotion and keep your audience engaged",
+            "Become more confident on camera"
+          ]
+        }
+      ]
+    }
+  },
+  "privacy": {
+    "refundPolicy": "Refunds are available up to 48 hours before the workshop start date. After that, registrations are non-refundable. Contact the organizer for special cases.",
+    "contactEmail": "Dalvisiddhi51@gmail.com"
+  }
+}
