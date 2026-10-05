@@ -6,21 +6,28 @@ export type SiteContent = {
     name: string;
     intro: string;
     voiceSection: string;
+    quoteMarathi?: string;
     social: { youtube: string; instagram: string };
   };
   workshop: {
     dates: string;
-    time: string;
+    travelDates?: string;
+    time?: string;
     duration: string;
     mode: string;
     seats: string;
-    originalPrice: number;
+    originalPrice?: number;
     price: number;
+    workshopPrice: number;
+    travelPrice: number;
+    advanceAmount: number;
+    balanceDueDate: string;
     currency: string;
     registrationOpen: boolean;
     joinDetails: string;
     day1: WorkshopDay;
     day2: WorkshopDay;
+    day3?: WorkshopDay;
   };
   privacy: {
     refundPolicy: string;
@@ -44,6 +51,9 @@ export type Registration = {
   phone: string;
   age?: string;
   location?: string;
+  busBoarding?: string;
+  packageType?: string;
+  paymentOption?: string;
   socialLink?: string;
   experience?: string;
   biggestChallenge?: string;

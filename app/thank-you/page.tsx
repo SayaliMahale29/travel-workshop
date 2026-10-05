@@ -13,19 +13,19 @@ export default async function ThankYouPage({ searchParams }: Props) {
   const registration = regId ? await findRegistrationById(regId) : null;
 
   return (
-    <section className="section-padding min-h-[70vh] bg-gradient-to-b from-brand-50 to-white">
+    <section className="section-padding min-h-[70vh] bg-gradient-to-b from-amber-50/50 via-[#FAF7F2] to-white">
       <div className="container-text text-center">
-        <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-green-100 text-4xl">
+        <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-emerald-100 text-3xl font-bold text-emerald-800 shadow-sm">
           ✓
         </div>
-        <h1 className="font-display text-3xl font-bold text-ink-950 sm:text-4xl">
+        <h1 className="font-display text-3xl font-bold text-stone-950 sm:text-4xl">
           {manual ? "Registration submitted!" : "You're registered!"}
         </h1>
-        <p className="mt-4 text-lg text-ink-700">
+        <p className="mt-4 text-base text-stone-700 sm:text-lg">
           {manual ? (
             <>
               Thank you{registration ? `, ${registration.name}` : ""}. We received your details
-              and payment screenshot. The team will verify the payment and contact you on
+              and payment screenshot. Akash and the team will verify the payment and contact you on
               WhatsApp or email.
             </>
           ) : (
@@ -36,23 +36,23 @@ export default async function ThankYouPage({ searchParams }: Props) {
           )}
         </p>
 
-        <div className="mx-auto mt-8 max-w-md rounded-2xl bg-white p-6 text-left shadow-sm">
-          <h2 className="font-semibold text-ink-950">{content.title}</h2>
-          <ul className="mt-4 space-y-2 text-sm text-ink-700">
+        <div className="mx-auto mt-8 max-w-md rounded-2xl border border-amber-200/80 bg-white p-6 text-left shadow-md">
+          <h2 className="font-display text-lg font-bold text-stone-950">{content.title}</h2>
+          <ul className="mt-4 space-y-2 text-sm text-stone-700">
             <li>📅 {content.workshop.dates}</li>
             <li>⏰ {content.workshop.time}</li>
-            <li>💻 {content.workshop.mode}</li>
+            <li>📍 {content.workshop.mode}</li>
           </ul>
-          <p className="mt-4 text-sm text-ink-600">
+          <p className="mt-4 border-t border-stone-100 pt-3 text-xs leading-relaxed text-stone-600">
             {manual
-              ? "Please keep your transaction ID and payment screenshot until confirmation."
+              ? "Please keep your transaction ID and payment screenshot handy. The team will reach out with the bus pick-up schedule and stay details."
               : content.workshop.joinDetails}
           </p>
         </div>
 
         <Link
           href="/"
-          className="mt-8 inline-block text-brand-600 hover:text-brand-700"
+          className="mt-8 inline-block font-semibold text-amber-800 hover:text-amber-900 underline"
         >
           ← Back to home
         </Link>

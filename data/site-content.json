@@ -1,94 +1,162 @@
 {
-  "siteName": "The Art of Storytelling Content Workshop with Akash",
-  "title": "The Art of Storytelling Content Workshop with Akash",
-  "tagline": "A beginner-friendly 2-day online workshop to start creating, experiment, and find your own style.",
+  "siteName": "Travel & Learn with Akash",
+  "title": "Content Creation & Storytelling Workshop in Hampi",
+  "tagline": "A 3-day practical, experiential workshop in the heart of Hampi with Akash Mahale & Siddhi Dalvi. Strictly limited to 10 creators.",
   "creator": {
-    "name": "Akash",
-    "intro": "Coming from a small town, I've built my name in the Marathi content creation space with 50M+ views, 2.5L+ followers and 8+ successful travel series, including Akash Challa 36 Divas 36 Jile and Unplanned Hampi.",
-    "voiceSection": "Akash has his own point of view when it comes to editing, storytelling, finding stories, and even approaching new and unknown people. That perspective is what makes his content special and what makes it truly his.",
+    "name": "Akash Mahale",
+    "intro": "I give Hampi a huge amount of credit for shaping the artist in me. Because this place has changed me in so many ways. The person I am today is probably not who I was four years ago. Hampi didn't just teach me how to travel — it helped me discover the artist within me. Everything I've learned, experienced, and understood over the last 4 years is something I now want to share with all of you.",
+    "voiceSection": "I've kept only 10 seats for this workshop because I don't just want to teach — I want to spend time with each person, understand their creative journey, and give them the best possible learning experience with individual attention.",
+    "quoteMarathi": "हा Workshop फक्त टेक्निकल गोष्टी किंवा पुस्तकात शिकवलं जातं तसं शिकवण्यापुरता मर्यादित नाही. कारण मी स्वतःही या सगळ्या गोष्टी पुस्तकातून नाही, तर प्रत्यक्ष अनुभवातून, माणसांकडून आणि प्रवासातून शिकलोय. म्हणून इथेही माझा जास्तीत जास्त भर Practical Learning वर असेल.",
     "social": {
       "youtube": "",
       "instagram": "https://www.instagram.com/akasheyess?igsi=N2Njcjg4NWRrMGkx&utm_source=qr"
     }
   },
   "workshop": {
-    "dates": "5th & 6th September 2026",
-    "time": "10 AM – 12 PM IST",
-    "duration": "4+ hours across 2 days",
-    "mode": "Online",
-    "seats": "Limited seats available",
-    "originalPrice": 1500,
-    "price": 799,
+    "dates": "31st October – 2nd November 2026",
+    "travelDates": "30th October – 3rd November 2026",
+    "duration": "3 Days Practical Workshop",
+    "mode": "Offline Experience in Hampi",
+    "seats": "Strictly 10 Seats Only",
+    "price": 21999,
+    "workshopPrice": 21999,
+    "travelPrice": 24999,
+    "advanceAmount": 5000,
+    "balanceDueDate": "25th October 2026",
     "currency": "INR",
     "registrationOpen": true,
-    "joinDetails": "Workshop link and joining instructions will be sent to your email and WhatsApp after successful payment.",
+    "joinDetails": "Detailed boarding instructions, packing guide, and stay details will be shared on WhatsApp and email after payment verification.",
     "day1": {
-      "title": "Day 1 — Script Writing & Visuals",
+      "title": "Day 1 (31st Oct) — Storytelling & Visual Learning",
       "sections": [
         {
-          "title": "Script Writing",
+          "title": "Breakfast & Gamified Welcome",
+          "subtitle": "Check-in @ Hampi Nature Cottage (Hippie Island 🛖🌴)",
           "items": [
-            "Write meaningful short-form scripts",
-            "Create hooks nobody wants to skip",
-            "Break down Akash's real scripts and videos",
-            "Learn to create endings that leave a meaningful impact"
+            "Welcome and introduction of participants in a Bali-themed property surrounded by Hampi hills",
+            "Introduction to Akash and the creative team",
+            "Warm, authentic South Indian breakfast"
           ]
         },
         {
-          "title": "Visual Storytelling — Special Lecture by Siddhi Dalvi",
+          "title": "Session 1: Storytelling Fundamentals with Akash",
+          "items": [
+            "Write meaningful short-form scripts that connect emotionally",
+            "Create hooks nobody wants to skip in the first 3 seconds",
+            "Break down Akash's real viral scripts and videos line-by-line",
+            "Learn to craft endings that leave a deep, lasting impact"
+          ]
+        },
+        {
+          "title": "Lunch Break",
+          "subtitle": "Delicious traditional South Indian vegetarian food 🍛",
+          "items": [
+            "Hot South Indian vegetarian feast with authentic local flavors"
+          ]
+        },
+        {
+          "title": "Session 2: Visual Learning & Cinematography — Special Lecture by Siddhi Dalvi",
           "subtitle": "Actor | Model | Assistant Director | DOP Assistant",
           "items": [
-            "Learn how to tell stories and bring emotions to life through visuals",
-            "Understand the aesthetic behind a frame",
-            "Learn how a DOP thinks",
-            "Explore angles, framing and shot sizes and the meaning behind them",
-            "Learn how to shoot effective B-rolls and why they matter"
+            "Learn how to tell stories and bring raw emotions to life through visuals",
+            "Understand the aesthetic, framing, and mood behind every frame",
+            "Explore camera angles, composition, shot sizes, and the storytelling meaning behind them",
+            "Learn how to shoot effective B-rolls and why they make or break your video"
           ]
         },
         {
-          "title": "Practicals & Homework",
+          "title": "📽️ Practical Activity: Outdoor Shooting Exercise",
+          "subtitle": "Picturesque fields and ancient boulder ruins of Hampi",
           "items": [
-            "You get hands-on practicals and homework, not just theory",
-            "Everything taught in the session, you will actually do yourself",
-            "Write, shoot and edit your own story and get direction on it",
-            "Learn by creating — that is how the lessons truly stay with you"
+            "Live hands-on shooting exercise applying what you just learned",
+            "Surrounded by the timeless history of Hampi's boulders and heritage rocks",
+            "Direct 1-on-1 field coaching from Akash and Siddhi"
+          ]
+        },
+        {
+          "title": "☕️ Tea Break & Session 3: Introduction to Basic Editing with Akash",
+          "items": [
+            "Evening tea break with snacks",
+            "Core editing structure, footage sorting, timeline assembly, and narrative pacing"
+          ]
+        },
+        {
+          "title": "Dinner & Night Activity: Screening & Constructive Review",
+          "subtitle": "Delicious South Indian dinner followed by group screening 🛖",
+          "items": [
+            "Edit the day's footage with guidance",
+            "Group screening of participants' work on projector",
+            "Personalized review and creative feedback by Akash and the team"
           ]
         }
       ]
     },
     "day2": {
-      "title": "Day 2 — Edit & Storytelling",
+      "title": "Day 2 (1st Nov) — Shoot, Edit & Storytelling",
       "sections": [
         {
-          "title": "Editing",
+          "title": "Morning: Move to Second Stay Near Virupaksha Temple 🛕",
+          "subtitle": "Check-in @ Rocky Guest House, Hampi",
           "items": [
-            "Watch Akash break down how he edits his videos from start to finish",
-            "Understand how visuals, sound, music, stickers and pacing work together",
-            "Get a look at Akash's actual editing timelines",
-            "Watch him write, shoot and edit a video live"
+            "Travel across town to our second stay near the historic Virupaksha Temple",
+            "Immerse in ancient architecture, local culture, and dynamic street life",
+            "Breakfast at a picturesque cafe surrounded by panoramic Hampi views"
           ]
         },
         {
-          "title": "Voiceover",
+          "title": "Session 1: Storytelling & Scriptwriting with Akash",
           "items": [
-            "Make your voice sound natural and engaging",
-            "Learn voice modulation, pauses and delivery"
+            "Voiceover Mastery: Make your voice sound natural, warm, and engaging",
+            "Learn voice modulation, pauses, breathing, and emotional delivery",
+            "Turn real-life spontaneous travel moments into stories worth telling",
+            "How to structure, build suspense, and keep the audience hooked till the last second"
           ]
         },
         {
-          "title": "Storytelling",
+          "title": "Lunch Break & Session 2: Advanced Editing Workshop with Akash",
           "items": [
-            "Turn real-life experiences into stories worth telling",
-            "Learn how to start and end a story",
-            "Build emotion and keep your audience engaged",
-            "Become more confident on camera"
+            "Delicious South Indian lunch break",
+            "Watch Akash break down his exact video editing workflow from raw clips to final export",
+            "Master how visuals, sound design, music, stickers, typography, and pacing work together",
+            "Get an exclusive look at Akash's actual editing timelines",
+            "Watch Akash write, shoot, and edit a complete video live in real-time"
+          ]
+        },
+        {
+          "title": "Practical Activity: Outdoor Storytelling & Shooting",
+          "subtitle": "Heritage monuments and vibrant alleys near Virupaksha Temple",
+          "items": [
+            "Shoot your main workshop project in a completely different aesthetic setting",
+            "Capture authentic human stories and architectural grandeur"
+          ]
+        },
+        {
+          "title": "Tea Break & Group Activity: Evening Creative Exchange",
+          "subtitle": "Delicious South Indian dinner & community bonding",
+          "items": [
+            "Collaborative evening session, idea exchange, and creator community networking",
+            "Milestone: You leave the workshop with 1 fully curated, shot & edited video created by you!"
+          ]
+        }
+      ]
+    },
+    "day3": {
+      "title": "Day 3 (2nd Nov) — Farewell & Journey Home",
+      "sections": [
+        {
+          "title": "Return Bus Journey (Hampi → Pune & Mumbai)",
+          "subtitle": "For Travel Package holders 🚌",
+          "items": [
+            "Morning farewell and group photos",
+            "Comfortable AC bus transportation from Hampi back to Pune & Mumbai",
+            "Lifetime access to the creator cohort network"
           ]
         }
       ]
     }
   },
   "privacy": {
-    "refundPolicy": "All workshop fees are non-refundable. Once you complete payment and submit your registration, we do not offer refunds, cancellations, or transfers.",
+    "refundPolicy": "All workshop fees are non-refundable. Because slots are strictly limited to 10 participants, cancellations cannot be refunded.",
     "contactEmail": "Dalvisiddhi51@gmail.com"
   }
 }

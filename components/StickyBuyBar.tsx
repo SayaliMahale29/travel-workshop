@@ -2,31 +2,39 @@ import RegisterCta from "@/components/RegisterCta";
 
 type Props = {
   price: number;
-  originalPrice: number;
+  originalPrice?: number;
   registrationOpen: boolean;
   registerHref: string;
 };
 
 export default function StickyBuyBar({
   price,
-  originalPrice,
   registrationOpen,
   registerHref,
 }: Props) {
   if (!registrationOpen) return null;
 
   return (
-    <div className="sticky bottom-0 z-40 border-t border-brand-100 bg-white/95 backdrop-blur">
+    <div className="sticky bottom-0 z-40 border-t border-amber-200/80 bg-white/95 backdrop-blur shadow-lg">
       <div className="container-narrow flex items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <div className="leading-tight">
-          <p className="text-sm text-ink-500 line-through">₹{originalPrice}</p>
-          <p className="text-2xl font-bold text-ink-950 sm:text-3xl">₹{price}</p>
+          <div className="flex items-center gap-2">
+            <span className="rounded bg-amber-100 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-900">
+              10 Slots Only
+            </span>
+            <span className="text-xs font-semibold text-stone-600">
+              Lock slot with ₹5,000 advance
+            </span>
+          </div>
+          <p className="font-hand text-2xl font-bold text-stone-950 sm:text-3xl">
+            From ₹{price.toLocaleString("en-IN")}
+          </p>
         </div>
         <RegisterCta
           href={registerHref}
-          className="rounded-xl bg-amber-400 px-8 py-3.5 text-base font-semibold text-ink-950 shadow-sm transition hover:bg-amber-300 sm:px-12 sm:text-lg"
+          className="rounded-full bg-gradient-to-r from-amber-500 to-amber-600 px-7 py-3 text-sm font-bold text-stone-950 shadow-md shadow-amber-500/20 transition hover:from-amber-400 hover:to-amber-500 sm:px-10 sm:text-base"
         >
-          Buy now
+          Enroll Now →
         </RegisterCta>
       </div>
     </div>

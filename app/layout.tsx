@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Anton, Inter, Playfair_Display } from "next/font/google";
+import { Anton, Inter, Kalam, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -21,6 +21,12 @@ const anton = Anton({
   variable: "--font-title",
 });
 
+const kalam = Kalam({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-handwritten",
+});
+
 // Admin edits must appear without a redeploy.
 export const dynamic = "force-dynamic";
 
@@ -33,7 +39,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: content.title,
       description: content.tagline,
       type: "website",
-      images: ["/images/akash-banner.jpg"],
+      images: ["/images/hampi-poster-yellow.jpg"],
     },
   };
 }
@@ -46,7 +52,10 @@ export default async function RootLayout({
   const content = await getSiteContent();
 
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable} ${anton.variable}`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${playfair.variable} ${anton.variable} ${kalam.variable}`}
+    >
       <body className="font-sans antialiased">
         <Header
           siteName={content.siteName}

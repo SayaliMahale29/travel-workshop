@@ -6,30 +6,62 @@ import type { Registration } from "@/lib/types";
 export const runtime = "nodejs";
 
 const schema = z.object({
-  name: z.string().trim().min(2).max(100),
-  email: z.string().trim().email(),
-  phone: z.string().trim().min(10).max(15),
-  age: z.string().trim().min(1).max(3),
-  location: z.string().trim().min(2).max(100),
-  socialLink: z.string().trim().min(2).max(200),
-  experience: z.string().trim().min(1).max(100),
-  biggestChallenge: z.string().trim().min(2).max(1000),
-  learningGoal: z.string().trim().min(1).max(100),
-  favoriteAkashContent: z.string().trim().min(2).max(1000),
-  transactionId: z.string().trim().min(4).max(100),
-  paymentConfirmed: z.literal("yes"),
+  name: z.string().trim().min(2, "Enter your name"),
+  email: z.string().trim().email("Enter a valid email address"),
+  phone: z
+    .string()
+    .trim()
+    .transform((value) => value.replace(/[\s-]/g, ""))
+    .pipe(z.string().min(10, "Enter a 10-digit WhatsApp number").max(15, "Enter a valid WhatsApp number")),
+  age: z.string().trim().min(1, "Enter your age").max(3),
+  location: z.string().trim().min(2, "Enter your location"),
+  busBoarding: z.string().trim().optional(),
+  packageType: z.string().trim().optional(),
+  paymentOption: z.string().trim().optional(),
+  amount: z.string().trim().optional(),
+  socialLink: z.string().trim().min(2, "Enter your Instagram or YouTube"),
+  experience: z.string().trim().min(1, "Select your content experience"),
+  biggestChallenge: z.string().trim().min(2, "Enter your biggest challenge"),
+  learningGoal: z.string().trim().min(1, "Select the one thing you want to master"),
+  favoriteAkashContent: z.string().trim().min(2, "Tell us what you like about Akash's content"),
+  transactionId: z.string().trim().min(3, "Enter the UPI transaction ID"),
+  paymentConfirmed: z.literal("yes", {
+    errorMap: () => ({ message: "Please confirm that payment is complete" }),
+  }),
 });
 
-const ALLOWED_SCREENSHOTS = new Set(["image/jpeg", "image/png", "image/webp"]);
+const ALLOWED_SCREENSHOTS = new Set(["image/jpeg", "image/jpg", "image/png", "image/webp"]);
 const MAX_SCREENSHOT_SIZE = 10 * 1024 * 1024;
+
+const FIELD_LABELS: Record<string, string> = {
+  name: "name",
+  email: "email",
+  phone: "WhatsApp number",
+  age: "age",
+  location: "location",
+  socialLink: "Instagram or YouTube",
+  experience: "content experience",
+  biggestChallenge: "biggest challenge",
+  learningGoal: "learning goal",
+  favoriteAkashContent: "favourite Akash content",
+  transactionId: "transaction ID",
+  paymentConfirmed: "payment confirmation",
+};
 
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
-    const parsed = schema.safeParse(Object.fromEntries(formData.entries()));
+    const fields: Record<string, string> = {};
+    for (const [key, value] of formData.entries()) {
+      if (typeof value === "string") fields[key] = value;
+    }
+
+    const parsed = schema.safeParse(fields);
     if (!parsed.success) {
+      const first = parsed.error.issues[0];
+      const field = first?.path[0] ? FIELD_LABELS[String(first.path[0])] ?? String(first.path[0]) : "form";
       return NextResponse.json(
-        { error: "Please complete every required field correctly." },
+        { error: first?.message ?? `Please check the ${field} field.` },
         { status: 400 }
       );
     }
@@ -52,13 +84,14 @@ export async function POST(request: Request) {
 
     const id = crypto.randomUUID();
     const paymentScreenshotPath = await savePaymentScreenshot(id, screenshot);
-    const { paymentConfirmed: _paymentConfirmed, ...details } = parsed.data;
+    const { paymentConfirmed: _paymentConfirmed, amount: submittedAmount, ...details } = parsed.data;
+    const finalAmount = submittedAmount ? Number(submittedAmount) || content.workshop.price : content.workshop.price;
     const registration: Registration = {
       id,
       ...details,
       paymentScreenshotPath,
       paymentScreenshotType: screenshot.type,
-      amount: content.workshop.price,
+      amount: finalAmount,
       currency: content.workshop.currency,
       status: "submitted",
       createdAt: new Date().toISOString(),

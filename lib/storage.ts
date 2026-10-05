@@ -97,12 +97,21 @@ async function ensureDataDir() {
 export async function getSiteContent(): Promise<SiteContent> {
   if (useBlob()) {
     const stored = await readBlob<SiteContent>(CONTENT_BLOB);
+    // If stored blob holds the old online workshop data, refresh it with Hampi content
+    if (stored && stored.workshop && !stored.workshop.dates?.includes("October")) {
+      await saveSiteContent(defaultContent as SiteContent);
+      return defaultContent as SiteContent;
+    }
     return stored ?? (defaultContent as SiteContent);
   }
 
   try {
     const raw = await fs.readFile(CONTENT_OVERRIDE, "utf-8");
-    return JSON.parse(raw) as SiteContent;
+    const parsed = JSON.parse(raw) as SiteContent;
+    if (parsed && parsed.workshop && !parsed.workshop.dates?.includes("October")) {
+      return defaultContent as SiteContent;
+    }
+    return parsed;
   } catch {
     return defaultContent as SiteContent;
   }
@@ -142,6 +151,15 @@ export async function getRegistrations(): Promise<Registration[]> {
     return JSON.parse(raw) as Registration[];
   } catch {
     return [];
+  }
+}
+
+export async function getRegistrationCount(): Promise<number> {
+  try {
+    if (useBlob()) return (await registrationBlobs()).length;
+    return (await getRegistrations()).length;
+  } catch {
+    return 0;
   }
 }
 

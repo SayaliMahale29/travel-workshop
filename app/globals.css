@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #eef6ff;
-  --foreground: #0b1f3a;
+  --background: #FAF7F2;
+  --foreground: #1C1917;
 }
 
 html {
@@ -28,5 +28,17 @@ body {
 
   .container-text {
     @apply mx-auto max-w-3xl;
+  }
+
+  /* Polaroid-style photo card effect inspired by travel scrapbooks */
+  .polaroid-card {
+    @apply rounded-sm bg-white p-3 pb-5 shadow-xl shadow-black/25 transition-transform duration-300 hover:z-10 hover:rotate-0 hover:scale-105 sm:p-4 sm:pb-6;
+  }
+
+  /* Paper texture styling for itinerary sheets */
+  .parchment-sheet {
+    @apply relative border border-stone-300/80 bg-[#FFFDF9] shadow-md;
+    background-image: radial-gradient(#e5decf 0.75px, transparent 0.75px);
+    background-size: 16px 16px;
   }
 }

@@ -256,8 +256,11 @@ export default function AdminPage() {
                   </div>
 
                   <dl className="mt-5 grid gap-4 text-sm sm:grid-cols-2">
+                    <Detail label="Package" value={r.packageType === "travel" ? "Travel Included Package (₹24,999)" : "Workshop Only (₹21,999)"} />
+                    <Detail label="Payment Option" value={r.paymentOption === "advance" ? "₹5,000 Advance (Remaining due before 25 Oct)" : "Full Payment"} />
                     <Detail label="Age" value={r.age} />
                     <Detail label="Location" value={r.location} />
+                    <Detail label="Bus pick-up" value={r.busBoarding} />
                     <Detail label="Instagram / YouTube" value={r.socialLink} />
                     <Detail label="Experience" value={r.experience} />
                     <Detail label="Biggest challenge" value={r.biggestChallenge} />
