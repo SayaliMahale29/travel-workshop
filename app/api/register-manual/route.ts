@@ -15,10 +15,7 @@ const schema = z.object({
     .pipe(z.string().min(10, "Enter a 10-digit WhatsApp number").max(15, "Enter a valid WhatsApp number")),
   age: z.string().trim().min(1, "Enter your age").max(3),
   location: z.string().trim().min(2, "Enter your location"),
-  busBoarding: z.string().trim().optional(),
-  packageType: z.string().trim().optional(),
-  paymentOption: z.string().trim().optional(),
-  amount: z.string().trim().optional(),
+  paymentOption: z.enum(["advance", "full"]).default("advance"),
   socialLink: z.string().trim().min(2, "Enter your Instagram or YouTube"),
   experience: z.string().trim().min(1, "Select your content experience"),
   biggestChallenge: z.string().trim().min(2, "Enter your biggest challenge"),
@@ -84,10 +81,12 @@ export async function POST(request: Request) {
 
     const id = crypto.randomUUID();
     const paymentScreenshotPath = await savePaymentScreenshot(id, screenshot);
-    const { paymentConfirmed: _paymentConfirmed, amount: submittedAmount, ...details } = parsed.data;
-    const finalAmount = submittedAmount ? Number(submittedAmount) || content.workshop.price : content.workshop.price;
+    const { paymentConfirmed: _paymentConfirmed, ...details } = parsed.data;
+    const finalAmount =
+      details.paymentOption === "advance" ? content.workshop.advanceAmount : content.workshop.price;
     const registration: Registration = {
       id,
+      batch: content.workshop.batch,
       ...details,
       paymentScreenshotPath,
       paymentScreenshotType: screenshot.type,

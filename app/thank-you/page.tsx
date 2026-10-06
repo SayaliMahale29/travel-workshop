@@ -25,8 +25,7 @@ export default async function ThankYouPage({ searchParams }: Props) {
           {manual ? (
             <>
               Thank you{registration ? `, ${registration.name}` : ""}. We received your details
-              and payment screenshot. Akash and the team will verify the payment and contact you on
-              WhatsApp or email.
+              and payment screenshot. {content.workshop.joinDetails}
             </>
           ) : (
             <>
@@ -40,12 +39,11 @@ export default async function ThankYouPage({ searchParams }: Props) {
           <h2 className="font-display text-lg font-bold text-stone-950">{content.title}</h2>
           <ul className="mt-4 space-y-2 text-sm text-stone-700">
             <li>📅 {content.workshop.dates}</li>
-            <li>⏰ {content.workshop.time}</li>
             <li>📍 {content.workshop.mode}</li>
           </ul>
           <p className="mt-4 border-t border-stone-100 pt-3 text-xs leading-relaxed text-stone-600">
             {manual
-              ? "Please keep your transaction ID and payment screenshot handy. The team will reach out with the bus pick-up schedule and stay details."
+              ? "Please keep your transaction ID and payment screenshot handy. The team will share stay details and everything you need before the workshop."
               : content.workshop.joinDetails}
           </p>
         </div>

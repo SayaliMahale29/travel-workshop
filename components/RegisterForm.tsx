@@ -5,34 +5,29 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 type WorkshopInfo = {
-  title: string;
   price: number;
-  workshopPrice: number;
-  travelPrice: number;
+  originalPrice?: number;
   advanceAmount: number;
   balanceDueDate: string;
   dates: string;
-  travelDates: string;
   registrationOpen: boolean;
-  defaultPackage?: "workshop" | "travel";
+  joinDetails: string;
 };
+
+const inr = (n: number) => `₹${n.toLocaleString("en-IN")}`;
 
 export default function RegisterForm({ workshop }: { workshop: WorkshopInfo }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
-  const [packageType, setPackageType] = useState<"workshop" | "travel">(
-    workshop.defaultPackage ?? "workshop"
-  );
   const [paymentOption, setPaymentOption] = useState<"advance" | "full">("advance");
 
-  const totalPackageFee =
-    packageType === "travel" ? workshop.travelPrice : workshop.workshopPrice;
+  const totalPackageFee = workshop.price;
   const payableAmount =
     paymentOption === "advance" ? workshop.advanceAmount : totalPackageFee;
   const remainingAmount =
     paymentOption === "advance" ? totalPackageFee - workshop.advanceAmount : 0;
+  const hasDiscount = Boolean(workshop.originalPrice && workshop.originalPrice > workshop.price);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -67,19 +62,16 @@ export default function RegisterForm({ workshop }: { workshop: WorkshopInfo }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-7">
-      {/* Hidden input fields sent with form */}
-      <input type="hidden" name="packageType" value={packageType} />
       <input type="hidden" name="paymentOption" value={paymentOption} />
-      <input type="hidden" name="amount" value={payableAmount} />
 
       {/* Workshop Overview Card */}
       <div className="rounded-3xl border border-amber-300 bg-white p-6 shadow-xl sm:p-8">
         <div className="flex flex-wrap items-center gap-2">
           <span className="rounded-full bg-amber-400 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-stone-950">
-            Strictly 10 Seats
+            🪔 Diwali Special
           </span>
           <span className="rounded-full bg-stone-100 px-3 py-1 text-xs font-semibold text-stone-700">
-            Hampi Practical Workshop
+            A slot for 10 people
           </span>
         </div>
         <h1 className="font-hand mt-4 text-3xl font-bold leading-tight text-stone-950 sm:text-4xl">
@@ -87,199 +79,105 @@ export default function RegisterForm({ workshop }: { workshop: WorkshopInfo }) {
         </h1>
         <p className="mt-3 text-sm leading-relaxed text-stone-700 sm:text-base">
           Join Akash Mahale and special mentor Siddhi Dalvi for a 3-day practical, experiential
-          workshop in Hampi. Select your package below and book your slot with a flexible ₹5,000
-          advance payment.
+          workshop in Hampi. Book your slot with a {inr(workshop.advanceAmount)} advance
+          payment (non-refundable).
         </p>
-        <div className="mt-5 flex flex-wrap items-center gap-4 border-t border-stone-200 pt-4 text-xs font-medium text-stone-800 sm:text-sm">
-          <span>🗓️ Workshop: {workshop.dates}</span>
-          <span>🚌 Travel Package: {workshop.travelDates}</span>
+        <div className="mt-5 flex flex-wrap items-end gap-3 border-t border-stone-200 pt-4">
+          {hasDiscount && (
+            <span className="text-lg font-semibold text-stone-400 line-through">
+              {inr(workshop.originalPrice!)}
+            </span>
+          )}
+          <span className="font-hand text-4xl font-bold text-amber-600">{inr(workshop.price)}</span>
+          <span className="pb-1 text-xs font-semibold text-emerald-700">Final Diwali Special price</span>
+        </div>
+        <div className="mt-4 flex flex-wrap items-center gap-4 text-xs font-medium text-stone-800 sm:text-sm">
+          <span>🗓️ {workshop.dates}</span>
           <span>📍 Hampi, Karnataka</span>
         </div>
       </div>
 
-      {/* STEP 1: SELECT PACKAGE */}
+      {/* STEP 1: PAYMENT PLAN CHOICE */}
       <div className="rounded-3xl border border-stone-200 bg-white p-6 shadow-xl sm:p-8">
         <span className="text-xs font-bold uppercase tracking-wider text-amber-800">
-          Step 1
+          Step 1 · Payment Option
         </span>
         <h2 className="font-hand mt-1 text-2xl font-bold text-stone-950 sm:text-3xl">
-          Select Your Package
+          How would you like to pay?
         </h2>
-        <p className="mt-1 text-xs text-stone-600 sm:text-sm">
-          Choose whether you want workshop-only or the all-inclusive travel package from Mumbai &amp; Pune.
-        </p>
 
-        <div className="mt-5 grid gap-4 sm:grid-cols-2">
-          {/* Option A: Workshop Only */}
+        <div className="mt-4 space-y-3">
           <label
-            className={`relative flex cursor-pointer flex-col justify-between rounded-2xl border-2 p-5 transition ${
-              packageType === "workshop"
-                ? "border-amber-500 bg-amber-50/70 shadow-md"
-                : "border-stone-200 bg-stone-50/50 hover:border-amber-300"
+            className={`flex cursor-pointer items-start gap-3 rounded-2xl border-2 p-4 transition ${
+              paymentOption === "advance"
+                ? "border-amber-500 bg-amber-50/70"
+                : "border-stone-200 hover:border-amber-300"
             }`}
           >
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <span className="rounded bg-stone-200/80 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-stone-800">
-                  Option 1 · Self Travel
-                </span>
-                <h3 className="font-hand mt-2 text-2xl font-bold text-stone-950">
-                  Workshop Fee
-                </h3>
-                <p className="text-xs text-stone-600">31st Oct – 2nd Nov</p>
-              </div>
-              <input
-                type="radio"
-                name="_pkg_choice"
-                value="workshop"
-                checked={packageType === "workshop"}
-                onChange={() => setPackageType("workshop")}
-                className="mt-1 h-5 w-5 text-amber-500 focus:ring-amber-400"
-              />
-            </div>
-            <div className="mt-4 border-t border-stone-200/80 pt-3">
-              <p className="font-hand text-3xl font-bold text-stone-950">₹21,999</p>
-              <p className="mt-1 text-xs text-stone-600">
-                Includes all sessions, 2 stays, all meals. Reach Hampi on your own.
-              </p>
-            </div>
-          </label>
-
-          {/* Option B: Travel Included */}
-          <label
-            className={`relative flex cursor-pointer flex-col justify-between rounded-2xl border-2 p-5 transition ${
-              packageType === "travel"
-                ? "border-amber-500 bg-amber-50/70 shadow-md"
-                : "border-stone-200 bg-stone-50/50 hover:border-amber-300"
-            }`}
-          >
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <span className="rounded bg-amber-200 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-amber-950">
-                  Option 2 · With AC Bus
-                </span>
-                <h3 className="font-hand mt-2 text-2xl font-bold text-stone-950">
-                  Travel Included
-                </h3>
-                <p className="text-xs text-stone-600">30th Oct – 3rd Nov</p>
-              </div>
-              <input
-                type="radio"
-                name="_pkg_choice"
-                value="travel"
-                checked={packageType === "travel"}
-                onChange={() => setPackageType("travel")}
-                className="mt-1 h-5 w-5 text-amber-500 focus:ring-amber-400"
-              />
-            </div>
-            <div className="mt-4 border-t border-stone-200/80 pt-3">
-              <p className="font-hand text-3xl font-bold text-amber-700">₹24,999</p>
-              <p className="mt-1 text-xs text-stone-600">
-                Workshop + AC Bus travel from Mumbai/Pune + direct local transfers.
-              </p>
-            </div>
-          </label>
-        </div>
-
-        {/* STEP 2: PAYMENT PLAN CHOICE */}
-        <div className="mt-6 border-t border-stone-200 pt-6">
-          <span className="text-xs font-bold uppercase tracking-wider text-amber-800">
-            Step 2 · Payment Option
-          </span>
-          <h3 className="font-hand mt-1 text-xl font-bold text-stone-950 sm:text-2xl">
-            How would you like to pay?
-          </h3>
-
-          <div className="mt-3 space-y-3">
-            <label
-              className={`flex cursor-pointer items-start gap-3 rounded-2xl border-2 p-4 transition ${
-                paymentOption === "advance"
-                  ? "border-amber-500 bg-amber-50/70"
-                  : "border-stone-200 hover:border-amber-300"
-              }`}
-            >
-              <input
-                type="radio"
-                name="_pay_choice"
-                value="advance"
-                checked={paymentOption === "advance"}
-                onChange={() => setPaymentOption("advance")}
-                className="mt-1 h-5 w-5 text-amber-500 focus:ring-amber-400"
-              />
-              <div className="flex-1">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <p className="text-sm font-bold text-stone-900 sm:text-base">
-                    Pay ₹5,000 Advance to lock your slot today
-                  </p>
-                  <span className="rounded bg-emerald-100 px-2 py-0.5 text-xs font-bold text-emerald-800">
-                    Recommended
-                  </span>
-                </div>
-                <p className="mt-1 text-xs text-stone-600 sm:text-sm">
-                  Remaining balance of <strong>₹{remainingAmount.toLocaleString("en-IN")}</strong> is
-                  payable before <strong>{workshop.balanceDueDate}</strong>.
-                </p>
-              </div>
-            </label>
-
-            <label
-              className={`flex cursor-pointer items-start gap-3 rounded-2xl border-2 p-4 transition ${
-                paymentOption === "full"
-                  ? "border-amber-500 bg-amber-50/70"
-                  : "border-stone-200 hover:border-amber-300"
-              }`}
-            >
-              <input
-                type="radio"
-                name="_pay_choice"
-                value="full"
-                checked={paymentOption === "full"}
-                onChange={() => setPaymentOption("full")}
-                className="mt-1 h-5 w-5 text-amber-500 focus:ring-amber-400"
-              />
-              <div className="flex-1">
+            <input
+              type="radio"
+              name="_pay_choice"
+              value="advance"
+              checked={paymentOption === "advance"}
+              onChange={() => setPaymentOption("advance")}
+              className="mt-1 h-5 w-5 text-amber-500 focus:ring-amber-400"
+            />
+            <div className="flex-1">
+              <div className="flex flex-wrap items-center justify-between gap-2">
                 <p className="text-sm font-bold text-stone-900 sm:text-base">
-                  Pay Full Amount — ₹{totalPackageFee.toLocaleString("en-IN")}
+                  Pay {inr(workshop.advanceAmount)} Advance (non-refundable) to lock your slot today
                 </p>
-                <p className="mt-1 text-xs text-stone-600">
-                  Complete 100% payment now with zero pending dues.
-                </p>
+                <span className="rounded bg-emerald-100 px-2 py-0.5 text-xs font-bold text-emerald-800">
+                  Recommended
+                </span>
               </div>
-            </label>
-          </div>
+              <p className="mt-1 text-xs text-stone-600 sm:text-sm">
+                Remaining balance of{" "}
+                <strong>{inr(workshop.price - workshop.advanceAmount)}</strong> is payable before{" "}
+                <strong>{workshop.balanceDueDate}</strong>.
+              </p>
+            </div>
+          </label>
+
+          <label
+            className={`flex cursor-pointer items-start gap-3 rounded-2xl border-2 p-4 transition ${
+              paymentOption === "full"
+                ? "border-amber-500 bg-amber-50/70"
+                : "border-stone-200 hover:border-amber-300"
+            }`}
+          >
+            <input
+              type="radio"
+              name="_pay_choice"
+              value="full"
+              checked={paymentOption === "full"}
+              onChange={() => setPaymentOption("full")}
+              className="mt-1 h-5 w-5 text-amber-500 focus:ring-amber-400"
+            />
+            <div className="flex-1">
+              <p className="text-sm font-bold text-stone-900 sm:text-base">
+                Pay Full Amount — {inr(totalPackageFee)}
+              </p>
+              <p className="mt-1 text-xs text-stone-600">
+                Complete 100% payment now with zero pending dues.
+              </p>
+            </div>
+          </label>
         </div>
       </div>
 
       {/* Participant Details */}
-      <FormCard title="3. Your details">
+      <FormCard title="2. Your details">
         <TextField name="name" label="What's your full name?" autoComplete="name" />
         <TextField name="email" label="Email address" type="email" autoComplete="email" />
         <TextField name="phone" label="WhatsApp contact number" type="tel" autoComplete="tel" />
         <TextField name="age" label="What's your age?" type="number" />
         <TextField name="location" label="Which city/town are you currently based in?" />
-        {packageType === "travel" ? (
-          <RadioGroup
-            name="busBoarding"
-            label="Bus Pick-up Location:"
-            options={[
-              "Mumbai Pick-up (30th Oct evening)",
-              "Pune Pick-up (30th Oct night)",
-            ]}
-          />
-        ) : (
-          <RadioGroup
-            name="busBoarding"
-            label="Travel Mode:"
-            options={[
-              "I will travel directly to Hampi on my own",
-            ]}
-          />
-        )}
         <TextField name="socialLink" label="Your Instagram handle or YouTube channel link" />
       </FormCard>
 
       {/* Creative Background */}
-      <FormCard title="4. Tell us about your creative journey">
+      <FormCard title="3. Tell us about your creative journey">
         <RadioGroup
           name="experience"
           label="How would you describe your content creation experience?"
@@ -318,7 +216,7 @@ export default function RegisterForm({ workshop }: { workshop: WorkshopInfo }) {
             Payment &amp; Confirmation
           </span>
           <span className="text-xs font-semibold text-stone-500">
-            {packageType === "travel" ? "Travel Package" : "Workshop Package"}
+            Diwali Special · {inr(workshop.price)}
           </span>
         </div>
 
@@ -327,7 +225,7 @@ export default function RegisterForm({ workshop }: { workshop: WorkshopInfo }) {
         </h2>
         {paymentOption === "advance" && (
           <p className="mt-1 text-xs font-semibold text-amber-800 sm:text-sm">
-            ★ ₹5,000 Advance to lock your slot today · Balance ₹{remainingAmount.toLocaleString("en-IN")}{" "}
+            ★ ₹5,000 Advance (non-refundable) to lock your slot today · Balance ₹{remainingAmount.toLocaleString("en-IN")}{" "}
             payable before {workshop.balanceDueDate}
           </p>
         )}
@@ -392,6 +290,12 @@ export default function RegisterForm({ workshop }: { workshop: WorkshopInfo }) {
             <span>
               I have transferred <strong>₹{payableAmount.toLocaleString("en-IN")}</strong> to{" "}
               <strong>mahale11akash-1@okicici</strong> and uploaded the genuine payment screenshot.
+              {paymentOption === "advance" && (
+                <>
+                  {" "}
+                  I understand the ₹5,000 advance is <strong>non-refundable</strong>.
+                </>
+              )}
             </span>
           </label>
         </div>
@@ -414,8 +318,7 @@ export default function RegisterForm({ workshop }: { workshop: WorkshopInfo }) {
       </button>
 
       <p className="text-center text-xs text-stone-500">
-        Your payment screenshot and details are stored securely. You will receive confirmation on
-        WhatsApp and email after verification.
+        Your payment screenshot and details are stored securely. {workshop.joinDetails}
       </p>
     </form>
   );

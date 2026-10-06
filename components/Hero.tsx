@@ -7,10 +7,9 @@ import type { SiteContent } from "@/lib/types";
 
 type Props = {
   content: SiteContent;
-  registrationCount: number;
 };
 
-export default function Hero({ content, registrationCount }: Props) {
+export default function Hero({ content }: Props) {
   const { workshop } = content;
 
   return (
@@ -40,16 +39,13 @@ export default function Hero({ content, registrationCount }: Props) {
               <span className="rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-semibold text-white backdrop-blur">
                 🗓️ {workshop.dates}
               </span>
-              <span className="rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-semibold text-white backdrop-blur">
-                🚌 Optional AC Bus from Mumbai &amp; Pune
-              </span>
               <span className="rounded-full border border-amber-400/40 bg-amber-400/20 px-4 py-1.5 text-sm font-bold text-amber-300 backdrop-blur">
-                💳 Book with ₹5,000 Advance
+                🪔 Diwali Special ₹{workshop.price.toLocaleString("en-IN")}
               </span>
             </div>
 
-            <div className="mx-auto mt-6 max-w-md lg:mx-0">
-              <SeatsProgress registrationCount={registrationCount} variant="dark" />
+            <div className="mt-6">
+              <SeatsProgress variant="dark" />
             </div>
 
             <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start">

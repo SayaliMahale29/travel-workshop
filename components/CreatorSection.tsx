@@ -16,33 +16,19 @@ export default function CreatorSection({ content }: Props) {
       <div id="about-hampi" className="container-narrow">
         <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
           {/* Left Column: Tilted Polaroid Collage */}
-          <div className="relative mx-auto h-[480px] w-full max-w-md sm:h-[560px] lg:col-span-5">
-            <div className="polaroid-card absolute left-0 top-0 w-[72%] -rotate-[8deg]">
+          <div className="relative mx-auto w-full max-w-sm py-6 lg:col-span-5">
+            <div className="polaroid-card -rotate-[5deg]">
               <div className="relative aspect-[4/5] w-full overflow-hidden">
                 <Image
                   src="/images/akash-sunset-view.jpg"
                   alt="Akash overlooking Hampi ruins at sunset"
                   fill
-                  sizes="(max-width: 768px) 70vw, 320px"
+                  sizes="(max-width: 768px) 80vw, 380px"
                   className="object-cover"
                 />
               </div>
               <p className="font-hand mt-3 text-center text-xl font-bold text-stone-800">
                 Akash · Travel Creator | Storyteller
-              </p>
-            </div>
-            <div className="polaroid-card absolute bottom-0 right-0 w-[62%] rotate-[9deg]">
-              <div className="relative aspect-[4/5] w-full overflow-hidden">
-                <Image
-                  src="/images/akash-temple-meditate.jpg"
-                  alt="Akash resting against an ancient carved pillar"
-                  fill
-                  sizes="(max-width: 768px) 60vw, 280px"
-                  className="object-cover"
-                />
-              </div>
-              <p className="font-hand mt-3 text-center text-xl font-bold text-stone-800">
-                Where stones whisper stories ✨
               </p>
             </div>
           </div>
@@ -69,20 +55,6 @@ export default function CreatorSection({ content }: Props) {
                 &ldquo;{creator.quoteMarathi}&rdquo;
               </blockquote>
             )}
-
-            <div className="mt-6 rounded-2xl border-2 border-dashed border-amber-400 bg-amber-50/40 p-5 sm:p-6">
-              <div className="flex items-center gap-3">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-amber-400 text-sm font-bold text-stone-950">
-                  10
-                </span>
-                <h3 className="font-hand text-2xl font-bold text-stone-950">
-                  Why strictly 10 seats?
-                </h3>
-              </div>
-              <p className="mt-2 text-sm leading-relaxed text-stone-700 sm:text-base">
-                {creator.voiceSection}
-              </p>
-            </div>
           </div>
         </div>
 

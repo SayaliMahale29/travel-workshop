@@ -74,7 +74,7 @@ const DAYS: Day[] = [
     stay: "🛕 Stay @ Rocky Guest House (near Virupaksha Temple)",
     steps: [
       {
-        title: "Travel to Our Second Stay",
+        title: "Move to Our Second Stay",
         note: "Check in and breakfast at a picturesque restaurant with Hampi views.",
       },
       {
@@ -127,7 +127,7 @@ export default function WorkshopSection({ content }: Props) {
             The itinerary
           </p>
           <h2 className="font-hand mt-2 text-4xl font-bold text-white sm:text-6xl">
-            Two Days. A Million Stories.
+            Three Days. A Million Stories.
           </h2>
           <p className="mt-3 text-base text-stone-200 sm:text-lg">
             A perfect blend of learning, creating and exploring.
@@ -143,25 +143,47 @@ export default function WorkshopSection({ content }: Props) {
           ))}
         </div>
 
-        <div className="mt-12 rounded-2xl border border-white/15 bg-stone-950/60 p-6 backdrop-blur-md sm:p-8">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex items-center gap-4">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-amber-400 text-2xl">
-                🚌
-              </div>
-              <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-amber-300">
-                  2nd November 2026
-                </p>
-                <h4 className="font-hand text-3xl font-bold text-white">
-                  Day 3 — Journey Home
-                </h4>
-                <p className="text-sm text-stone-300">
-                  Return AC bus journey from Hampi back to Pune &amp; Mumbai (for Travel Package holders).
-                </p>
-              </div>
+        <div className="parchment-sheet mt-12 rounded-3xl p-6 shadow-2xl sm:p-10">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-amber-400 text-3xl shadow-sm">
+              🧘
             </div>
-            <p className="font-hand text-xl text-amber-200">Hope to see you there!</p>
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-amber-800">
+                2nd November 2026
+              </p>
+              <h3 className="font-hand text-5xl font-bold text-stone-950">Day 3</h3>
+              <p className="font-hand mt-1 text-2xl font-bold text-amber-800">
+                Breathe · Share · Belong
+              </p>
+              <ol className="mt-5 space-y-4 border-l-2 border-dashed border-amber-400 pl-5">
+                <li className="relative">
+                  <span className="absolute -left-[27px] top-1.5 h-3 w-3 rounded-full border-2 border-white bg-amber-500" />
+                  <h4 className="font-bold text-stone-950">
+                    Morning Yoga near Virupaksha Temple
+                  </h4>
+                  <p className="mt-0.5 text-sm text-stone-700">
+                    We&apos;ll start our morning with a special yoga session near the Virupaksha
+                    Temple, focusing on mindfulness and being present in the moment.
+                  </p>
+                </li>
+                <li className="relative">
+                  <span className="absolute -left-[27px] top-1.5 h-3 w-3 rounded-full border-2 border-white bg-amber-500" />
+                  <h4 className="font-bold text-stone-950">Community Activities</h4>
+                  <p className="mt-0.5 text-sm text-stone-700">
+                    We&apos;ll also do some community activities, spend time talking, laughing,
+                    sharing stories, and simply enjoy being together.
+                  </p>
+                </li>
+              </ol>
+              <p className="mt-6 text-sm leading-relaxed text-stone-800 sm:text-base">
+                We&apos;re going to live so many beautiful moments and make memories that we&apos;ll
+                carry with us. Because this isn&apos;t the end of the journey —
+              </p>
+              <p className="font-hand mt-2 -rotate-1 text-3xl font-bold text-amber-800 sm:text-4xl">
+                it&apos;s the beginning of something new ↗
+              </p>
+            </div>
           </div>
         </div>
 

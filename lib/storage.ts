@@ -94,26 +94,30 @@ async function ensureDataDir() {
   await fs.mkdir(DATA_DIR, { recursive: true });
 }
 
+const DEFAULT_CONTENT = defaultContent as SiteContent;
+
+// Saved content from an older site version is replaced so new prices/text always show.
+function isOutdated(stored: SiteContent | null): boolean {
+  return (stored?.contentVersion ?? 0) < (DEFAULT_CONTENT.contentVersion ?? 0);
+}
+
 export async function getSiteContent(): Promise<SiteContent> {
   if (useBlob()) {
     const stored = await readBlob<SiteContent>(CONTENT_BLOB);
-    // If stored blob holds the old online workshop data, refresh it with Hampi content
-    if (stored && stored.workshop && !stored.workshop.dates?.includes("October")) {
-      await saveSiteContent(defaultContent as SiteContent);
-      return defaultContent as SiteContent;
+    if (stored && isOutdated(stored)) {
+      await saveSiteContent(DEFAULT_CONTENT);
+      return DEFAULT_CONTENT;
     }
-    return stored ?? (defaultContent as SiteContent);
+    return stored ?? DEFAULT_CONTENT;
   }
 
   try {
     const raw = await fs.readFile(CONTENT_OVERRIDE, "utf-8");
     const parsed = JSON.parse(raw) as SiteContent;
-    if (parsed && parsed.workshop && !parsed.workshop.dates?.includes("October")) {
-      return defaultContent as SiteContent;
-    }
+    if (isOutdated(parsed)) return DEFAULT_CONTENT;
     return parsed;
   } catch {
-    return defaultContent as SiteContent;
+    return DEFAULT_CONTENT;
   }
 }
 

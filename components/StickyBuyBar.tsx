@@ -9,6 +9,7 @@ type Props = {
 
 export default function StickyBuyBar({
   price,
+  originalPrice,
   registrationOpen,
   registerHref,
 }: Props) {
@@ -20,14 +21,19 @@ export default function StickyBuyBar({
         <div className="leading-tight">
           <div className="flex items-center gap-2">
             <span className="rounded bg-amber-100 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-900">
-              10 Slots Only
+              🪔 Diwali Special
             </span>
             <span className="text-xs font-semibold text-stone-600">
-              Lock slot with ₹5,000 advance
+              Lock slot with ₹5,000 advance (non-refundable)
             </span>
           </div>
           <p className="font-hand text-2xl font-bold text-stone-950 sm:text-3xl">
-            From ₹{price.toLocaleString("en-IN")}
+            {originalPrice && originalPrice > price && (
+              <span className="mr-2 text-lg text-stone-400 line-through sm:text-xl">
+                ₹{originalPrice.toLocaleString("en-IN")}
+              </span>
+            )}
+            ₹{price.toLocaleString("en-IN")}
           </p>
         </div>
         <RegisterCta

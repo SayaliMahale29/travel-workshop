@@ -1,11 +1,11 @@
 {
+  "contentVersion": 2,
   "siteName": "Travel & Learn with Akash",
   "title": "Content Creation & Storytelling Workshop in Hampi",
-  "tagline": "A 3-day practical, experiential workshop in the heart of Hampi with Akash Mahale & Siddhi Dalvi. Strictly limited to 10 creators.",
+  "tagline": "A 3-day practical, experiential workshop in the heart of Hampi with Akash Mahale & Siddhi Dalvi.",
   "creator": {
     "name": "Akash Mahale",
     "intro": "I give Hampi a huge amount of credit for shaping the artist in me. Because this place has changed me in so many ways. The person I am today is probably not who I was four years ago. Hampi didn't just teach me how to travel — it helped me discover the artist within me. Everything I've learned, experienced, and understood over the last 4 years is something I now want to share with all of you.",
-    "voiceSection": "I've kept only 10 seats for this workshop because I don't just want to teach — I want to spend time with each person, understand their creative journey, and give them the best possible learning experience with individual attention.",
     "quoteMarathi": "हा Workshop फक्त टेक्निकल गोष्टी किंवा पुस्तकात शिकवलं जातं तसं शिकवण्यापुरता मर्यादित नाही. कारण मी स्वतःही या सगळ्या गोष्टी पुस्तकातून नाही, तर प्रत्यक्ष अनुभवातून, माणसांकडून आणि प्रवासातून शिकलोय. म्हणून इथेही माझा जास्तीत जास्त भर Practical Learning वर असेल.",
     "social": {
       "youtube": "",
@@ -14,18 +14,17 @@
   },
   "workshop": {
     "dates": "31st October – 2nd November 2026",
-    "travelDates": "30th October – 3rd November 2026",
     "duration": "3 Days Practical Workshop",
     "mode": "Offline Experience in Hampi",
-    "seats": "Strictly 10 Seats Only",
-    "price": 21999,
-    "workshopPrice": 21999,
-    "travelPrice": 24999,
+    "seats": "Slots for 10 people",
+    "batch": "hampi-diwali-2026",
+    "originalPrice": 25000,
+    "price": 19999,
     "advanceAmount": 5000,
     "balanceDueDate": "25th October 2026",
     "currency": "INR",
     "registrationOpen": true,
-    "joinDetails": "Detailed boarding instructions, packing guide, and stay details will be shared on WhatsApp and email after payment verification.",
+    "joinDetails": "Once you enroll, you'll receive a confirmation message on WhatsApp, and Akash's team will coordinate with you further.",
     "day1": {
       "title": "Day 1 (31st Oct) — Storytelling & Visual Learning",
       "sections": [
@@ -141,22 +140,25 @@
       ]
     },
     "day3": {
-      "title": "Day 3 (2nd Nov) — Farewell & Journey Home",
+      "title": "Day 3 (2nd Nov) — Mindfulness & Memories",
       "sections": [
         {
-          "title": "Return Bus Journey (Hampi → Pune & Mumbai)",
-          "subtitle": "For Travel Package holders 🚌",
+          "title": "Morning Yoga near Virupaksha Temple",
           "items": [
-            "Morning farewell and group photos",
-            "Comfortable AC bus transportation from Hampi back to Pune & Mumbai",
-            "Lifetime access to the creator cohort network"
+            "A special yoga session focusing on mindfulness and being present in the moment"
+          ]
+        },
+        {
+          "title": "Community Activities",
+          "items": [
+            "Talking, laughing, sharing stories, and simply enjoying being together"
           ]
         }
       ]
     }
   },
   "privacy": {
-    "refundPolicy": "All workshop fees are non-refundable. Because slots are strictly limited to 10 participants, cancellations cannot be refunded.",
+    "refundPolicy": "The ₹5,000 advance paid at the time of booking is non-refundable. All workshop fees are non-refundable. Because there are slots for only 10 people, cancellations cannot be refunded.",
     "contactEmail": "Dalvisiddhi51@gmail.com"
   }
 }

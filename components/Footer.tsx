@@ -17,7 +17,7 @@ export default function Footer({ siteName, contactEmail, instagram }: Props) {
               3-Day Practical Content Creation Workshop in Hampi
             </p>
             <p className="mt-1 text-xs text-stone-500">
-              Pick-up &amp; Drop: Mumbai &amp; Pune · 31st Oct – 2nd Nov 2026
+              Hampi, Karnataka · 31st Oct – 2nd Nov 2026
             </p>
           </div>
           <div className="flex flex-col gap-2 text-sm sm:items-end">

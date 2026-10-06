@@ -23,9 +23,9 @@ export default async function PrivacyPage() {
 
         <h2 className="mt-8 text-xl font-semibold text-stone-900">Data we collect</h2>
         <p className="text-stone-700">
-          When you register, we collect the information you enter, your travel/bus preferences,
-          your UPI transaction reference, and your payment screenshot to verify payment, allocate
-          cottage rooms, and send travel instructions. Payment screenshots are protected and
+          When you register, we collect the information you enter, your UPI transaction reference,
+          and your payment screenshot to verify payment, allocate cottage rooms, and share
+          workshop details. Payment screenshots are protected and
           available only to the workshop organizers.
         </p>
       </div>

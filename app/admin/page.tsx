@@ -12,6 +12,7 @@ export default function AdminPage() {
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const [tab, setTab] = useState<"content" | "registrations">("content");
+  const [showOld, setShowOld] = useState(false);
 
   async function login(e: React.FormEvent) {
     e.preventDefault();
@@ -94,6 +95,11 @@ export default function AdminPage() {
 
   if (!content) return <p className="p-8 text-center">Loading…</p>;
 
+  const currentBatch = content.workshop.batch;
+  const newRegistrations = registrations.filter((r) => r.batch && r.batch === currentBatch);
+  const oldRegistrations = registrations.filter((r) => !r.batch || r.batch !== currentBatch);
+  const visibleRegistrations = showOld ? oldRegistrations : newRegistrations;
+
   return (
     <section className="section-padding bg-brand-50/30 min-h-screen">
       <div className="container-narrow">
@@ -119,7 +125,7 @@ export default function AdminPage() {
               tab === "registrations" ? "bg-brand-600 text-white" : "bg-white text-ink-700"
             }`}
           >
-            Registrations ({registrations.length})
+            Registrations ({newRegistrations.length})
           </button>
         </div>
 
@@ -238,12 +244,30 @@ export default function AdminPage() {
 
         {tab === "registrations" && (
           <div className="space-y-4">
-            {registrations.length === 0 ? (
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => setShowOld(false)}
+                className={`rounded-full px-4 py-2 text-sm font-medium ${
+                  !showOld ? "bg-amber-500 text-stone-950" : "bg-white text-ink-700"
+                }`}
+              >
+                New batch — Diwali 2026 ({newRegistrations.length})
+              </button>
+              <button
+                onClick={() => setShowOld(true)}
+                className={`rounded-full px-4 py-2 text-sm font-medium ${
+                  showOld ? "bg-stone-800 text-white" : "bg-white text-ink-700"
+                }`}
+              >
+                Old registrations ({oldRegistrations.length})
+              </button>
+            </div>
+            {visibleRegistrations.length === 0 ? (
               <div className="rounded-2xl bg-white p-8 text-center text-ink-500 shadow-sm">
-                No registrations submitted yet
+                {showOld ? "No old registrations" : "No registrations for the new batch yet"}
               </div>
             ) : (
-              registrations.map((r) => (
+              visibleRegistrations.map((r) => (
                 <article key={r.id} className="rounded-2xl bg-white p-5 shadow-sm sm:p-6">
                   <div className="flex flex-wrap items-start justify-between gap-3">
                     <div>
@@ -256,11 +280,9 @@ export default function AdminPage() {
                   </div>
 
                   <dl className="mt-5 grid gap-4 text-sm sm:grid-cols-2">
-                    <Detail label="Package" value={r.packageType === "travel" ? "Travel Included Package (₹24,999)" : "Workshop Only (₹21,999)"} />
-                    <Detail label="Payment Option" value={r.paymentOption === "advance" ? "₹5,000 Advance (Remaining due before 25 Oct)" : "Full Payment"} />
+                    <Detail label="Payment Option" value={r.paymentOption === "advance" ? "₹5,000 Advance, non-refundable (Remaining due before 25 Oct)" : "Full Payment"} />
                     <Detail label="Age" value={r.age} />
                     <Detail label="Location" value={r.location} />
-                    <Detail label="Bus pick-up" value={r.busBoarding} />
                     <Detail label="Instagram / YouTube" value={r.socialLink} />
                     <Detail label="Experience" value={r.experience} />
                     <Detail label="Biggest challenge" value={r.biggestChallenge} />

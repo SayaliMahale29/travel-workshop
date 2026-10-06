@@ -1,25 +1,24 @@
 export type SiteContent = {
+  contentVersion?: number;
   siteName: string;
   title: string;
   tagline: string;
   creator: {
     name: string;
     intro: string;
-    voiceSection: string;
+    voiceSection?: string;
     quoteMarathi?: string;
     social: { youtube: string; instagram: string };
   };
   workshop: {
     dates: string;
-    travelDates?: string;
     time?: string;
     duration: string;
     mode: string;
     seats: string;
+    batch?: string;
     originalPrice?: number;
     price: number;
-    workshopPrice: number;
-    travelPrice: number;
     advanceAmount: number;
     balanceDueDate: string;
     currency: string;
@@ -46,6 +45,7 @@ export type WorkshopDay = {
 
 export type Registration = {
   id: string;
+  batch?: string;
   name: string;
   email: string;
   phone: string;

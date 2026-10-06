@@ -11,73 +11,12 @@ export default function ExperienceSection() {
             What we arrange for you
           </p>
           <h2 className="font-hand mt-3 text-4xl font-bold leading-tight text-white sm:text-6xl">
-            Two Stays. Authentic Food. Dedicated Travel.
+            Two Stays. Authentic Food.
           </h2>
           <p className="mt-4 text-base text-stone-200 sm:text-lg">
-            We provide comfortable, curated stays in two contrasting parts of Hampi, authentic
-            vegetarian meals, and an optional end-to-end travel package.
+            We provide comfortable, curated stays in two contrasting parts of Hampi and authentic
+            vegetarian meals.
           </p>
-        </div>
-
-        {/* Travel Package Banner */}
-        <div className="mt-12 rounded-3xl border-2 border-amber-400 bg-white p-7 shadow-2xl sm:p-9">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-            <div className="flex items-start gap-4">
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-amber-400 text-3xl shadow-sm">
-                🚌
-              </div>
-              <div>
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="rounded-full bg-amber-400 px-3 py-1 text-xs font-bold uppercase tracking-wide text-stone-950">
-                    Travel Included Package — ₹24,999
-                  </span>
-                  <span className="rounded-full bg-stone-100 px-3 py-1 text-xs font-semibold text-stone-700">
-                    30th Oct – 3rd Nov
-                  </span>
-                </div>
-                <h3 className="font-hand mt-2 text-2xl font-bold text-stone-950 sm:text-3xl">
-                  AC Bus Travel with Mumbai &amp; Pune Pick-up
-                </h3>
-                <p className="mt-2 text-sm text-stone-700 sm:text-base">
-                  Don&apos;t want the hassle of booking trains or buses? Choose our Travel Included
-                  Package and our team will handle your complete journey:
-                </p>
-                <ul className="mt-3 grid gap-2 text-sm text-stone-800 sm:grid-cols-2">
-                  <li className="flex items-center gap-2">
-                    <span className="text-amber-600 font-bold">✓</span>
-                    <span>Comfortable AC Bus Travel</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-amber-600 font-bold">✓</span>
-                    <span>Mumbai &amp; Pune Pickup (30th Oct evening)</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-amber-600 font-bold">✓</span>
-                    <span>Direct travel to workshop location in Hampi</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-amber-600 font-bold">✓</span>
-                    <span>Local transportation from bus stop to hotel</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-amber-600 font-bold">✓</span>
-                    <span>Hampi → Mumbai/Pune return journey</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-amber-600 font-bold">✓</span>
-                    <span>Complete travel arranged by the team</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="shrink-0 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-center lg:w-56">
-              <p className="text-xs font-semibold text-stone-600">Traveling on your own?</p>
-              <p className="font-hand mt-1 text-xl font-bold text-stone-900">
-                Workshop Fee: ₹21,999
-              </p>
-              <p className="mt-1 text-xs text-stone-500">Reach Hampi directly (31 Oct – 2 Nov)</p>
-            </div>
-          </div>
         </div>
 
         {/* Stays Grid */}
@@ -135,7 +74,7 @@ export default function ExperienceSection() {
                 Steps Away from Virupaksha Temple
               </p>
               <p className="mt-4 text-sm leading-relaxed text-stone-700 sm:text-base">
-                On Day 2, we travel to the vibrant cultural heart of Hampi. Staying near the
+                On Day 2, we move to the vibrant cultural heart of Hampi. Staying near the
                 majestic Virupaksha Temple gives us immediate access to ancient Dravidian
                 architecture, local artisans, dynamic street stories, and evening monument shoots.
               </p>
